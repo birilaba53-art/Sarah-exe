@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0b12">
+<title>Sarah.exe — private connection</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 85% 10%,rgba(218,115,170,.14),transparent 28%),radial-gradient(circle at 10% 88%,rgba(153,112,218,.13),transparent 30%),linear-gradient(145deg,#100b16 0%,#180f1d 46%,#0d0a12 100%);color:#faf3f8}body{display:flex;justify-content:center;overflow-x:hidden}.app{width:100%;max-width:520px;min-height:100vh;padding:22px 18px 28px;position:relative}.glow{position:fixed;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(222,126,178,.28) 0%,rgba(177,121,211,.12) 45%,transparent 72%);filter:blur(25px);top:-120px;right:-95px;pointer-events:none}.glow:after{content:"";position:absolute;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,rgba(193,137,223,.18),transparent 68%);filter:blur(28px);left:-190px;top:500px}.top{display:flex;justify-content:space-between;align-items:center;color:#cbbdcb;font-size:12px;letter-spacing:.2px}.top span:last-child{color:#efb2cf}.dot{width:7px;height:7px;border-radius:50%;background:#69d38b;display:inline-block;margin-right:7px;box-shadow:0 0 12px rgba(105,211,139,.58)}.card{margin-top:28px;background:rgba(31,20,38,.80);border:1px solid rgba(240,183,218,.14);border-radius:24px;padding:26px;box-shadow:0 18px 55px rgba(0,0,0,.30);backdrop-filter:blur(12px);animation:cardIn .55s ease both}@keyframes cardIn{from{opacity:0;transform:translateY(15px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}h1{font-size:36px;line-height:1.05;margin:10px 0 12px}h2{font-size:24px;line-height:1.2;margin:5px 0 12px}p{color:#d9ceda;line-height:1.68;margin:10px 0}.accent{color:#efa8ca}button,.choice{width:100%;border:0;border-radius:15px;padding:15px 16px;margin-top:11px;background:linear-gradient(135deg,#e7a7c8,#cba5dd);color:#26172a;font-weight:700;font-size:15px;cursor:pointer;transition:.22s;box-shadow:0 8px 24px rgba(192,116,172,.12)}button:hover,.choice:hover{transform:translateY(-2px)}button:active,.choice:active{transform:scale(.985)}.choice{background:rgba(67,42,69,.70);color:#f9eff7;border:1px solid rgba(239,173,210,.17);text-align:left;box-shadow:none;display:flex;align-items:center;gap:10px}.choice.selected{border-color:rgba(239,173,210,.62);background:linear-gradient(135deg,rgba(139,74,113,.72),rgba(95,67,125,.70));box-shadow:0 0 0 2px rgba(222,145,188,.07),0 10px 30px rgba(181,100,159,.12)}.check{margin-left:auto;opacity:.5}.selected .check{opacity:1}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid .choice{margin-top:0;min-height:68px}.grid .choice span:first-child{font-size:22px}.grid .choice div{font-size:14px;line-height:1.25}.multi-note{font-size:12px;color:#a596a5;margin-top:10px}.otherbox{overflow:hidden;max-height:0;opacity:0;transform:translateY(-5px);transition:max-height .35s ease,opacity .3s ease,transform .3s ease}.otherbox.show{max-height:220px;opacity:1;transform:translateY(0)}textarea,input[type=text]{width:100%;min-height:112px;resize:vertical;border-radius:15px;border:1px solid rgba(239,173,210,.19);background:rgba(18,11,22,.80);color:#fff;padding:14px;font:15px inherit;outline:none;margin-top:10px}input[type=text]{min-height:auto;height:48px}textarea:focus,input[type=text]:focus{border-color:#de91bc;box-shadow:0 0 0 3px rgba(222,145,188,.08)}.small{font-size:12px;color:#a596a5}.hidden{display:none}.progress{height:4px;background:#332337;border-radius:5px;margin-top:20px;overflow:hidden}.bar{height:100%;width:25%;background:linear-gradient(90deg,#dd8eb9,#ad8bd2);transition:.4s}.heart{font-size:40px;color:#e9a2c5}.pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(229,160,196,.09);border:1px solid rgba(229,160,196,.12);color:#dcb3ca;font-size:12px;margin-bottom:12px}.divider{height:1px;background:rgba(240,183,218,.09);margin:22px 0}.reveal{animation:reveal .45s ease both}@keyframes reveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.spark{display:inline-block;animation:float 2.2s ease-in-out infinite}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@media(max-width:380px){.grid{grid-template-columns:1fr}.card{padding:22px}h2{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<main class="app">
+  <div class="top"><span><span class="dot"></span>private connection</span><span>Sarah.exe</span></div>
+
+  <section class="card" id="s0">
+    <div class="heart">♡</div>
+    <h1>Hey Sarah.</h1>
+    <p>Je pourrais t'écrire un long message. Mais je préfère te proposer quelque chose d'un peu différent.</p>
+    <button onclick="go(1)">Commencer</button>
+  </section>
+
+  <section class="card hidden" id="s1">
+    <span class="pill">Petite entrée en matière</span>
+    <h2>On commence par quelque chose de simple.</h2>
+    <p>En ce moment, de quoi as-tu le plus besoin ?</p>
+    <button class="choice" onclick="single('q1','Un peu de tranquillité');go(2)">🌙 <span>Un peu de tranquillité</span></button>
+    <button class="choice" onclick="single('q1','Quelqu’un qui m’écoute');go(2)">🤍 <span>Quelqu’un qui m’écoute</span></button>
+    <button class="choice" onclick="single('q1','Du temps pour moi');go(2)">⏳ <span>Du temps pour moi</span></button>
+    <button class="choice" onclick="single('q1','Je ne sais pas encore');go(2)">☁️ <span>Je ne sais pas encore</span></button>
+    <div class="progress"><div class="bar" style="width:10%"></div></div>
+  </section>
+
+  <section class="card hidden" id="s2">
+    <span class="pill">Petit détour gourmand</span>
+    <h2>Une question importante. 👀</h2>
+    <p>D'abord : <strong>sucré ou salé ?</strong></p>
+    <div class="grid" id="sweetSalt">
+      <button class="choice" onclick="chooseFoodType('Sucré')"><span>🍰</span><div>Sucré</div></button>
+      <button class="choice" onclick="chooseFoodType('Salé')"><span>🍟</span><div>Salé</div></button>
+    </div>
+    <div id="foodChoices" class="hidden reveal">
+      <div class="divider"></div>
+      <p id="foodTitle"></p>
+      <div class="grid" id="foodGrid"></div>
+      <div class="multi-note">Tu peux en choisir plusieurs.</div>
+      <div class="otherbox" id="foodOtherBox"><input type="text" id="foodOther" placeholder="Ton choix à toi..." /></div>
+      <button onclick="saveFood();go(3)">Continuer →</button>
+    </div>
+    <div class="progress"><div class="bar" style="width:22%"></div></div>
+  </section>
+
+  <section class="card hidden" id="s3">
+    <span class="pill">Envies d'évasion</span>
+    <h2>Un petit tour de Madagascar. 🇲🇬</h2>
+    <p>Si tu pouvais découvrir quelques endroits à Madagascar, lesquels te tenteraient ?</p>
+    <div class="grid" id="placeGrid"></div>
+    <div class="multi-note">Plusieurs choix possibles.</div>
+    <div class="otherbox" id="placeOtherBox"><input type="text" id="placeOther" placeholder="Un autre endroit..." /></div>
+    <button onclick="savePlaces();go(4)">Continuer →</button>
+    <div class="progress"><div class="bar" style="width:35%"></div></div>
+  </section>
+
+  <section class="card hidden" id="s4">
+    <span class="pill">Et sur place...</span>
+    <h2>Tu aimerais surtout faire quoi ? 🎯</h2>
+    <div class="grid" id="activityGrid"></div>
+    <div class="multi-note">Tu peux en choisir plusieurs.</div>
+    <div class="otherbox" id="activityOtherBox"><input type="text" id="activityOther" placeholder="Une autre activité..." /></div>
+    <button onclick="saveActivities();go(5)">Continuer →</button>
+    <div class="progress"><div class="bar" style="width:48%"></div></div>
+  </section>
+
+  <section class="card hidden" id="s5">
+    <span class="pill">Ton petit idéal</span>
+    <h2>Si tu pouvais choisir une journée parfaite...</h2>
+    <p>À quoi elle ressemblerait le plus ?</p>
+    <div class="grid" id="dayGrid"></div>
+    <div class="multi-note">Plusieurs réponses possibles.</div>
+    <div class="otherbox" id="dayOtherBox"><input type="text" id="dayOther" placeholder="Ton idée..." /></div>
+    <button onclick="saveDay();go(6)">Continuer →</button>
+    <div class="progress"><div class="bar" style="width:60%"></div></div>
+  </section>
+
+  <section class="card hidden" id="s6">
+    <span class="pill">Une partie un peu plus importante</span>
+    <h2>Pour parler de notre situation...</h2>
+    <p>Tu serais plus à l'aise comment ?</p>
+    <button class="choice" onclick="single('communication','Par messages');go(7)">💬 <span>Par messages</span></button>
+    <button class="choice" onclick="single('communication','Par appel');go(7)">🎙️ <span>Par appel</span></button>
+    <button class="choice" onclick="single('communication','Un peu des deux');go(7)">💬🎙️ <span>Un peu des deux</span></button>
+    <button class="choice" onclick="single('communication','Je ne sais pas encore');go(7)">🤍 <span>Je ne sais pas encore</span></button>
+    <div class="progress"><div class="bar" style="width:72%"></div></div>
+  </section>
+
+  <section class="card hidden" id="s7">
+    <span class="pill">Et si on se retrouvait ?</span>
+    <h2>Un de ces jours. 🌙</h2>
+    <p>Pas besoin de prévoir quelque chose de compliqué. Qu'est-ce qui te conviendrait le mieux ?</p>
+    <button class="choice" onclick="single('meeting','Un soir, pas loin');go(8)">🌙 <span>Un soir, pas loin</span></button>
+    <button class="choice" onclick="single('meeting','Un week-end, ailleurs');go(8)">🌆 <span>Un week-end, ailleurs</span></button>
+    <button class="choice" onclick="single('meeting','On en parle d’abord par message');go(8)">💬 <span>On en parle d'abord par message</span></button>
+    <button class="choice" onclick="single('meeting','Pas maintenant');go(8)">🤍 <span>Pas maintenant</span></button>
+    <div class="progress"><div class="bar" style="width:84%"></div></div>
+  </section>
+
+  <section class="card hidden" id="s8">
+    <span class="pill">Dernière petite chose <span class="spark">✦</span></span>
+    <h2>Un petit mot, si tu en as envie.</h2>
+    <p>Tu peux me laisser quelque chose que tu aimerais que je sache. Même quelques mots suffisent.</p>
+    <textarea id="finalMessage" placeholder="Écris ce que tu veux..."></textarea>
+    <button onclick="submitForm()">Terminer 🤍</button>
+    <div class="progress"><div class="bar" style="width:96%"></div></div>
+  </section>
+
+  <section class="card hidden" id="s9">
+    <div class="heart">♡</div>
+    <h2>Merci d’avoir pris le temps.</h2>
+    <p>Je voulais juste te laisser un petit espace pour me parler, sans pression. Merci d’avoir été honnête avec moi. 🤍</p>
+    <p class="small">Je lirai tout avec attention.</p>
+  </section>
+</main>
+
+<form id="send" action="https://formsubmit.co/brillantmaheriniaina@gmail.com" method="POST" class="hidden">
+  <input type="hidden" name="_subject" value="❤️ Réponse de Sarah — Sarah.exe V7">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_next" value="">
+  <input name="besoin" id="f_need"><input name="nourriture" id="f_food"><input name="madagascar" id="f_places"><input name="activites" id="f_activities"><input name="journee_ideale" id="f_day"><input name="communication" id="f_comm"><input name="rendez_vous" id="f_meeting"><textarea name="message" id="f_message"></textarea>
+</form>
+
+<script>
+const A={need:'',foodType:'',food:[],places:[],activities:[],day:[],communication:'',meeting:'',message:''};
+const foods={
+  Sucré:[['🍫','Chocolat'],['🍰','Gâteau'],['🥞','Crêpes'],['🍦','Glace'],['🍩','Donut'],['✨','Autre']],
+  Salé:[['🍕','Pizza'],['🍔','Burger'],['🍟','Frites'],['🍗','Poulet'],['🍜','Pâtes / nouilles'],['✨','Autre']]
+};
+const places=[['🌊','Nosy Be'],['🏝️','Sainte-Marie'],['🌿','Andasibe'],['🏔️','Antsirabe'],['🌅','Morondava'],['🏞️','Isalo'],['🌴','Ifaty'],['🌊','Diego / Antsiranana'],['🌿','Ranomafana'],['✨','Autre']];
+const activities=[['🌊','Plage'],['🥾','Randonnée'],['🌅','Coucher de soleil'],['🍽️','Découvrir des endroits pour manger'],['📸','Prendre des photos'],['🚗','Petite sortie / road trip'],['🌿','Découvrir la nature'],['🎡','Activités amusantes'],['✨','Autre']];
+const days=[['🌅','Une journée tranquille'],['🌊','Une journée à la plage'],['🌆','Sortir et découvrir un endroit'],['🍽️','Manger quelque chose de bon'],['🎬','Rester posé devant un film / une série'],['🚗','Partir quelque part sans trop prévoir'],['🫶','Passer du temps avec quelqu’un que j’aime'],['✨','Autre']];
+function go(n){document.querySelectorAll('.card').forEach(x=>x.classList.add('hidden'));const el=document.getElementById('s'+n);el.classList.remove('hidden');el.classList.remove('reveal');void el.offsetWidth;el.classList.add('reveal');window.scrollTo({top:0,behavior:'smooth'})}
+function single(key,v){A[key]=v}
+function makeGrid(id,data,arr,otherId){const grid=document.getElementById(id);grid.innerHTML='';data.forEach(([icon,label])=>{const b=document.createElement('button');b.className='choice';b.type='button';b.innerHTML=`<span>${icon}</span><div>${label}</div><span class="check">✓</span>`;b.onclick=()=>{b.classList.toggle('selected');if(b.classList.contains('selected')){arr.push(label)}else{const i=arr.indexOf(label);if(i>-1)arr.splice(i,1)}if(label==='Autre')document.getElementById(otherId).classList.toggle('show',b.classList.contains('selected'))};grid.appendChild(b)})}
+function chooseFoodType(type){A.foodType=type;A.food=[];document.querySelectorAll('#sweetSalt .choice').forEach(b=>b.classList.remove('selected'));event.currentTarget.classList.add('selected');document.getElementById('foodChoices').classList.remove('hidden');document.getElementById('foodTitle').textContent=type==='Sucré'?'Alors, côté sucré, qu’est-ce qui te tente ?':'Alors, côté salé, qu’est-ce qui te tente ?';document.getElementById('foodGrid').innerHTML='';document.getElementById('foodOtherBox').classList.remove('show');document.getElementById('foodOther').value='';makeGrid('foodGrid',foods[type],A.food,'foodOtherBox')}
+function saveFood(){const other=document.getElementById('foodOther').value.trim();if(other){A.food=A.food.filter(x=>x!=='Autre');A.food.push('Autre : '+other)}}
+function savePlaces(){const other=document.getElementById('placeOther').value.trim();if(other){A.places=A.places.filter(x=>x!=='Autre');A.places.push('Autre : '+other)}}
+function saveActivities(){const other=document.getElementById('activityOther').value.trim();if(other){A.activities=A.activities.filter(x=>x!=='Autre');A.activities.push('Autre : '+other)}}
+function saveDay(){const other=document.getElementById('dayOther').value.trim();if(other){A.day=A.day.filter(x=>x!=='Autre');A.day.push('Autre : '+other)}}
+function submitForm(){A.message=document.getElementById('finalMessage').value.trim();document.getElementById('f_need').value=A.need||'Non répondu';document.getElementById('f_food').value=(A.foodType||'Non répondu')+' — '+(A.food.join(', ')||'Aucun choix');document.getElementById('f_places').value=A.places.join(', ')||'Aucun choix';document.getElementById('f_activities').value=A.activities.join(', ')||'Aucun choix';document.getElementById('f_day').value=A.day.join(', ')||'Aucun choix';document.getElementById('f_comm').value=A.communication||'Non répondu';document.getElementById('f_meeting').value=A.meeting||'Non répondu';document.getElementById('f_message').value=A.message||'Aucun message';go(9);setTimeout(()=>document.getElementById('send').submit(),350)}
+makeGrid('placeGrid',places,A.places,'placeOtherBox');makeGrid('activityGrid',activities,A.activities,'activityOtherBox');makeGrid('dayGrid',days,A.day,'dayOtherBox');
+</script>
+</body>
+</html>
